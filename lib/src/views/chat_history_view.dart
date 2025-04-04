@@ -39,7 +39,7 @@ class ChatHistoryView extends StatefulWidget {
 class _ChatHistoryViewState extends State<ChatHistoryView> {
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+    padding: const EdgeInsets.only(left: 4, right: 4),
     child: ChatViewModelClient(
       builder: (context, viewModel, child) {
         final history = [
@@ -64,7 +64,7 @@ class _ChatHistoryViewState extends State<ChatHistoryView> {
             final isUser = message.origin.isUser;
 
             return Padding(
-              padding: const EdgeInsets.only(top: 6),
+              padding: const EdgeInsets.only(top: 4),
               child:
                   isUser
                       ? UserMessageView(
@@ -77,6 +77,7 @@ class _ChatHistoryViewState extends State<ChatHistoryView> {
                       : LlmMessageView(
                         message,
                         isWelcomeMessage: messageIndex == 0,
+                    index: messageIndex,
                       ),
             );
           },

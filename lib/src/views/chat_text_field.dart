@@ -72,6 +72,13 @@ class ChatTextField extends StatelessWidget {
   Widget build(BuildContext context) =>
       isCupertinoApp(context)
           ? CupertinoTextField(
+        onTapOutside:
+            (event) {
+          FocusManager
+              .instance
+              .primaryFocus
+              ?.unfocus();
+        },
             minLines: minLines,
             maxLines: maxLines,
             controller: controller,
@@ -88,6 +95,13 @@ class ChatTextField extends StatelessWidget {
             textInputAction: textInputAction,
           )
           : TextField(
+        onTapOutside:
+            (event) {
+          FocusManager
+              .instance
+              .primaryFocus
+              ?.unfocus();
+        },
             minLines: minLines,
             maxLines: maxLines,
             controller: controller,
