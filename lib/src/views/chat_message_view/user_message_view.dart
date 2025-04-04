@@ -37,7 +37,7 @@ class UserMessageView extends StatelessWidget {
       ...[
         for (final attachment in message.attachments)
           Padding(
-            padding: const EdgeInsets.only(bottom: 6),
+            padding: const EdgeInsets.only(bottom: 4),
             child: Align(
               alignment: Alignment.topRight,
               child: SizedBox(
@@ -59,7 +59,7 @@ class UserMessageView extends StatelessWidget {
           return Align(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.only(right: 16),
+              padding: const EdgeInsets.only(right: 8, left: 12),
               child: HoveringButtons(
                 isUserMessage: true,
                 chatStyle: chatStyle,
@@ -69,10 +69,10 @@ class UserMessageView extends StatelessWidget {
                   decoration: userStyle.decoration!,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      left: 16,
-                      right: 16,
-                      top: 12,
-                      bottom: 12,
+                      left: 8,
+                      right: 8,
+                      top: 8,
+                      bottom: 8,
                     ),
                     child: AdaptiveCopyText(
                       chatStyle: chatStyle,

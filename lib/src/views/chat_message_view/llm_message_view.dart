@@ -23,6 +23,7 @@ class LlmMessageView extends StatelessWidget {
   const LlmMessageView(
     this.message, {
     this.isWelcomeMessage = false,
+        this.index = 0,
     super.key,
   });
 
@@ -31,16 +32,18 @@ class LlmMessageView extends StatelessWidget {
 
   /// Whether the message is the welcome message.
   final bool isWelcomeMessage;
+  final int index;
 
   @override
   Widget build(BuildContext context) => Row(
     children: [
       Flexible(
-        flex: 6,
+        flex: 8,
         child: Column(
           children: [
             ChatViewModelClient(
               builder: (context, viewModel, child) {
+
                 final text = message.text;
                 final chatStyle = LlmChatViewStyle.resolve(viewModel.style);
                 final llmStyle = LlmMessageStyle.resolve(
@@ -49,26 +52,26 @@ class LlmMessageView extends StatelessWidget {
 
                 return Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: llmStyle.iconDecoration,
-                        child: Icon(
-                          llmStyle.icon,
-                          color: llmStyle.iconColor,
-                          size: 12,
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 8),
+                    //   child: Container(
+                    //     height: 20,
+                    //     width: 20,
+                    //     decoration: llmStyle.iconDecoration,
+                    //     child: Icon(
+                    //       llmStyle.icon,
+                    //       color: llmStyle.iconColor,
+                    //       size: 12,
+                    //     ),
+                    //   ),
+                    // ),
                     HoveringButtons(
                       isUserMessage: false,
                       chatStyle: chatStyle,
                       clipboardText: text,
                       child: Container(
                         decoration: llmStyle.decoration,
-                        margin: const EdgeInsets.only(left: 28),
+                        margin: const EdgeInsets.only(left: 8),
                         padding: const EdgeInsets.all(8),
                         child:
                             text == null
@@ -93,6 +96,7 @@ class LlmMessageView extends StatelessWidget {
                                           : viewModel.responseBuilder!(
                                             context,
                                             text,
+                                            index,
                                           ),
                                 ),
                       ),
@@ -104,7 +108,7 @@ class LlmMessageView extends StatelessWidget {
           ],
         ),
       ),
-      const Flexible(flex: 2, child: SizedBox()),
+      const Flexible(flex: 1, child: SizedBox()),
     ],
   );
 }
