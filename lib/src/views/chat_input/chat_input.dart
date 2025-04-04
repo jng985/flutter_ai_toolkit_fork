@@ -147,14 +147,14 @@ class _ChatInputState extends State<ChatInput> {
   @override
   Widget build(BuildContext context) => Container(
     color: _inputStyle!.backgroundColor,
-    padding: const EdgeInsets.all(16),
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
     child: Column(
       children: [
         AttachmentsView(
           attachments: _attachments,
           onRemove: onRemoveAttachment,
         ),
-        if (_attachments.isNotEmpty) const SizedBox(height: 6),
+        if (_attachments.isNotEmpty) const SizedBox(height: 4),
         ValueListenableBuilder(
           valueListenable: _textController,
           builder:
@@ -166,7 +166,7 @@ class _ChatInputState extends State<ChatInput> {
                       children: [
                         if (_viewModel!.enableAttachments)
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 14),
+                            padding: const EdgeInsets.only(bottom: 8),
                             child: AttachmentActionBar(
                               onAttachments: onAttachments,
                             ),
@@ -176,10 +176,10 @@ class _ChatInputState extends State<ChatInput> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left: 16,
-                                  right: 16,
-                                  top: widget.onCancelEdit != null ? 24 : 8,
-                                  bottom: 8,
+                                  left: 8,
+                                  right: 8,
+                                  top: widget.onCancelEdit != null ? 8 : 4,
+                                  bottom: 4,
                                 ),
                                 child: DecoratedBox(
                                   decoration: _inputStyle!.decoration!,
@@ -201,7 +201,7 @@ class _ChatInputState extends State<ChatInput> {
                                                 minLines: 1,
                                                 maxLines: 1024,
                                                 controller: _textController,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 focusNode: _focusNode,
                                                 textInputAction:
                                                     isMobile
@@ -224,8 +224,8 @@ class _ChatInputState extends State<ChatInput> {
                                                     _inputStyle!.hintStyle!,
                                                 hintPadding:
                                                     const EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                      vertical: 8,
+                                                      horizontal: 8,
+                                                      vertical: 4,
                                                     ),
                                               ),
                                             ),
@@ -247,7 +247,7 @@ class _ChatInputState extends State<ChatInput> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 14),
+                          padding: const EdgeInsets.only(bottom: 8),
                           child: InputButton(
                             inputState: _inputState,
                             chatStyle: _chatStyle!,
